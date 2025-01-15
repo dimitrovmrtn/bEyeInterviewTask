@@ -5,6 +5,7 @@ import {
   deleteAssignment,
   createAssignment,
   updateAssignmentsOrder,
+  IAssignment,
 } from "../../redux/assignmentSlice.ts";
 import { AppDispatch } from "../../redux/store.ts";
 import { fetchSurveys, ISurvey } from "../../redux/surveySlice.ts";
@@ -166,7 +167,38 @@ const AssignmentsPage = () => {
     handleReset(type);
   };
 
-  const handleDelete = (id: number, type: "SQ" | "SU") => {
+  const reorderAssignments = (questionId: number) => {
+    let assignmentsCopy = [...assignments].filter(
+      (as) => as.questionId !== questionId
+    );
+    let assignmentsToUpdate = [...assignedQuestionsForSelectedSurvey].filter(
+      (assingment) => assingment.id !== questionId
+    );
+    let updatedAssignments: IAssignment[] = [];
+    assignmentsToUpdate.forEach((assignment, index) => {
+      let newUpdateAssignment = {
+        ...assignmentsCopy.find((as) => {
+          return as.questionId === assignment.id;
+        }),
+      };
+      newUpdateAssignment.questionOrder = index + 1;
+      updatedAssignments.push(newUpdateAssignment);
+    });
+    // any because of the 2 possible assignment types => ts gets confused
+    updatedAssignments.forEach((updatedEntry: any) => {
+      let asToUpdateFromCopy = assignmentsCopy.find(
+        (obj) =>
+          obj.surveyId === updatedEntry.surveyId &&
+          obj.questionId === updatedEntry.questionId
+      );
+
+      assignmentsCopy[assignmentsCopy.indexOf(asToUpdateFromCopy)] =
+        updatedEntry;
+    });
+    dispatch(updateAssignmentsOrder(assignmentsCopy));
+  };
+
+  const handleDelete = async (id: number, type: "SQ" | "SU") => {
     const assignmentToDelete =
       type === "SQ"
         ? assignmentsForSelectedSurvey.find(
@@ -175,15 +207,9 @@ const AssignmentsPage = () => {
         : assignmentsForSelectedSurvey.find(
             (assignment) => assignment.userId === id
           );
-    dispatch(deleteAssignment(assignmentToDelete.id));
+    await dispatch(deleteAssignment(assignmentToDelete.id));
     if (type === "SQ") {
-      let newAssignedQuestions = assignedQuestionsForSelectedSurvey.filter(
-        (question) => question.id !== id
-      );
-      newAssignedQuestions.forEach(
-        (question, index) => (question.questionOrder = index + 1)
-      );
-      assignedQuestionsForSelectedSurvey = [...newAssignedQuestions];
+      reorderAssignments(id);
     }
   };
 

@@ -1,10 +1,10 @@
 import React from "react";
-import "./Header.css";
 import { FaCircleUser, FaUserLock } from "react-icons/fa6";
+import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <div className="header">
+    <div className={styles.header}>
       <div>
         {" "}
         <FaCircleUser /> bEye Client

@@ -1,20 +1,20 @@
 import React from "react";
-import "./Tabs.css";
 import { NavLink } from "react-router-dom";
+import styles from "./Tabs.module.css";
 
 const Tabs = () => {
   return (
-    <div className="tabs">
-      <NavLink className="tab" to="/surveys">
+    <div className={styles.tabs}>
+      <NavLink className={styles.tab} to="/surveys">
         Surveys
       </NavLink>
-      <NavLink className="tab" to="/questions">
+      <NavLink className={styles.tab} to="/questions">
         Questions
       </NavLink>
-      <NavLink className="tab" to="/users">
+      <NavLink className={styles.tab} to="/users">
         Users
       </NavLink>
-      <NavLink className="tab" to="/assignments">
+      <NavLink className={styles.tab} to="/assignments">
         Assignments
       </NavLink>
     </div>
