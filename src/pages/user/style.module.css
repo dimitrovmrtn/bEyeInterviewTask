@@ -1,0 +1,119 @@
+.userContainer {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.userForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.userForm input {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.formInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 70%;
+}
+
+label {
+  font-weight: 500;
+  margin-right: 10px;
+  text-align: left;
+}
+
+.user {
+  text-align: left;
+  padding: 10px;
+  background-color: rgb(245, 255, 247);
+  margin: 10px;
+  box-shadow: 5px 5px 5px #ccc;
+  border: 3px solid rgb(133, 156, 177);
+  border-radius: 10px;
+  transition: 0.4s;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.user:hover {
+  background-color: #fff;
+}
+
+.userList {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.active {
+  box-shadow: 5px 5px 5px #ccc;
+  border: 3px solid #fff;
+  background-color: #fff;
+}
+
+.actionButtons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.actionButtons button {
+  width: 80px;
+  cursor: pointer;
+}
+
+.clearButton {
+  box-shadow: 5px 5px 5px #ccc;
+  border: 2px solid red;
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.userActions {
+  visibility: hidden;
+  float: right;
+  cursor: pointer;
+}
+
+.user:hover .userActions {
+  visibility: visible;
+}
+
+.saveButton {
+  box-shadow: 5px 5px 5px #ccc;
+  border: 2px solid #555;
+  background-color: rgb(230, 243, 255);
+  padding: 8px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 975px) {
+  .userList {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .userContainer {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .userList {
+    grid-template-columns: 50% 50%;
+  }
+
+  .userActions {
+    visibility: visible;
+  }
+}

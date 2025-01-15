@@ -1,0 +1,109 @@
+.surveyContainer {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.surveyForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.surveyForm input {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.formInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 80%;
+}
+
+label {
+  font-weight: 500;
+  margin-right: 10px;
+  text-align: left;
+}
+
+.survey {
+  text-align: left;
+  padding: 10px;
+  background-color: rgb(255, 248, 230);
+  margin: 10px auto;
+  box-shadow: 5px 5px 5px #ccc;
+  border: 3px solid rgb(133, 156, 177);
+  border-radius: 10px;
+  transition: 0.4s;
+  width: 70%;
+  cursor: pointer;
+}
+
+.survey:hover {
+  background-color: #fff;
+}
+
+.active {
+  box-shadow: 5px 5px 5px #ccc;
+  border: 3px solid #fff;
+  background-color: #fff;
+}
+
+.actionButtons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.actionButtons button {
+  width: 80px;
+  cursor: pointer;
+}
+
+.clearButton {
+  box-shadow: 5px 5px 5px #ccc;
+  border: 2px solid red;
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+input {
+  box-shadow: 5px 5px 5px #ccc;
+  border: 1px solid rgb(226, 226, 226);
+}
+
+.surveyActions {
+  visibility: hidden;
+  float: right;
+  cursor: pointer;
+}
+
+.survey:hover .surveyActions {
+  visibility: visible;
+}
+
+.saveButton {
+  box-shadow: 5px 5px 5px #ccc;
+  border: 2px solid #555;
+  background-color: rgb(230, 243, 255);
+  padding: 8px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 790px) {
+  .surveyContainer {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .surveyActions {
+    visibility: visible;
+  }
+}

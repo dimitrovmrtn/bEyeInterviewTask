@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  border-bottom: 3px solid rgb(133, 156, 177);
+}
+
+.header input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.header button {
+  background-color: #fff;
+  box-shadow: 5px 5px 5px #ccc;
+  border: 2px solid grey;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
